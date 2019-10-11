@@ -23,22 +23,24 @@ body {
 		transform: rotatez(-8deg);
 		overflow: hidden;
 		z-index: 3;
+		animation: moveHead 5s alternate infinite;
 	}
+
 	.ear {
-			border-left: 10px solid transparent;
-			border-right: 40px solid transparent;
-			border-bottom: 30px solid $black;
+			border-left: 20px solid transparent;
+			border-right: 45px solid transparent;
+			border-bottom: 45px solid $black;
 			position: absolute;
 			z-index: -1;
 
 			&:before {
 				content: "";
-				border-left: 5px solid transparent;
-				border-right: 35px solid transparent;
-				border-bottom: 25px solid #fff;
+				border-left: 13px solid transparent;
+				border-right: 40px solid transparent;
+				border-bottom: 35px solid #fff;
 				position: absolute;
-				left: -0.8em;
-				top: 0em;
+				left: -1.1em;
+				top: 0.3em;
 				border-radius: 0 0 50px 0;
 			}
 
@@ -47,12 +49,16 @@ body {
 				top: 0.5em;
 				left: -1.7em;
 				border-radius: 0 0 40px 0;
+				animation: moveLeftEar 3s alternate infinite;
+				animation-delay: 1s;
 			}
 			&.ear-right {
 				transform: scalex(-1) rotate(-145deg);
 				top: -0.5em;
 				right: -1em;
 				border-radius: 0 0 40px 0;
+				animation: moveRightEar 3s alternate infinite;
+				animation-delay: 1.5s;
 		}
 	}
 	.eye-mark {
@@ -130,10 +136,13 @@ body {
 		border-radius: 50%;
 		border-top-right-radius: 0;
 		position: absolute;
-		top: 3.3em;
+		top: 3em;
 		left: -2em;
-		transform: rotate(-7deg);
+		transform: rotate(7deg);
 		z-index: 4;
+		animation: moveLeftMoustache 4s alternate infinite;
+		animation-delay: 1s;
+		transform-origin: center right;
 
 		&:before,
 		&:after {
@@ -157,9 +166,12 @@ body {
 	}
 	.moustache-right {
 		transform: rotate(-7deg) scalex(-1);
-		right: -1.5em;
-		top: 2.3em;
+		right: 3em;
+		top: 3em;
 		left: initial;
+		animation: moveRightMoustache 4s alternate infinite;
+		transform-origin: center right;
+		// animation-delay: 1s;
 	}
 	.cat-body {
 		width: 190px;
@@ -312,5 +324,46 @@ body {
 			z-index: -1;
 			transform: rotatez(0deg);
 		}
+	}
+}
+
+@keyframes moveHead {
+	0% {
+		transform: rotatez(-8deg);
+	}
+	100% {
+		transform: rotatez(8deg);
+	}
+}
+@keyframes moveLeftEar {
+	0% {
+		transform: rotate(-165deg);
+	}
+	100% {
+		transform: rotatez(-175deg);
+	}
+}
+@keyframes moveRightEar {
+	0% {
+		transform: scalex(-1) rotateZ(-145deg);
+	}
+	100% {
+		transform: scalex(-1) rotateZ(-155deg);
+	}
+}
+@keyframes moveRightMoustache {
+	0% {
+		transform: rotate(-7deg) scalex(-1);
+	}
+	100% {
+		transform: rotate(7deg) scalex(-1);
+	}
+}
+@keyframes moveLeftMoustache {
+	0% {
+		transform: rotate(7deg);
+	}
+	100% {
+		transform: rotate(-7deg);
 	}
 }
